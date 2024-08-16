@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-sm   navbar-light bg-light" style="z-index: 1000;">
+  <a class="navbar-brand" href="#">Insta</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'createpage' %}">create</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profilepage' %}">create</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'logoutpage' %}" class="btn btn-danger">Logout</a>
+        {% else %}
+        <a href="{% url 'loginpage' %}" class="btn btn-secondary">Login</a>
+      
+        <a href="{% url 'registerpage' %}" class="btn btn-secondary">Register</a>
+        {% endif %}
+      </ul>
+      <div class="social-part">
+        
+        
+        <h2>
+        {% for message in messages %}
+
+        <button type="button" class="btn btn-primary position-relative">
+        {{ message }} <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2"><span class="visually-hidden">unread messages</span></span>
+        </button>
+         
+        {% endfor %}
+
+        
+       
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"></i></h2>
+      </div>
+    </div>
+  </nav>
